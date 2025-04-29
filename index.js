@@ -7,11 +7,9 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const app = express();
 const port = 8000;
 
-
 console.log('DO_SPACES_ENDPOINT:', process.env.DO_SPACES_ENDPOINT);
 
 const spacesEndpoint = new AWS.Endpoint(process.env.DO_SPACES_ENDPOINT);
-
 
 const s3 = new AWS.S3({
     endpoint: spacesEndpoint,
@@ -20,6 +18,13 @@ const s3 = new AWS.S3({
 });
 
 const bucketName = process.env.DO_SPACES_BUCKET;
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 app.get('/', async (req, res) => {
     try {
@@ -69,8 +74,6 @@ app.get('/files', async (req, res) => {
         res.status(500).send('Error fetching files');
     }
 });
-
-
 
 app.get('/download', async (req, res) => {
     try {
