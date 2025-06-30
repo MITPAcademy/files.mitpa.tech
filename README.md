@@ -1,12 +1,12 @@
-# MITPA SE File Server
+# PRACTA SE File Server
 
-This is a simple Express.js server that connects to a DigitalOcean Spaces bucket to list and serve PDF files — primarily used to distribute Simulated Exams (SEs) for the MITPA community.
+This is a simple Express.js server that connects to a DigitalOcean Spaces bucket to list and serve PDF files — primarily used to distribute Simulated Exams (SEs) for the PRACTA community.
 
 > 📝 This service provides a **user-friendly interface** and a **JSON API** to access available SEs.
 > 
 > ⚠️ All SEs are for practice and should not be considered official content.
 > 
-> 🔗 Visit: [https://files.mitpa.tech](https://files.mitpa.tech)
+> 🔗 Visit: [https://files.practa.tech](https://files.practa.tech)
 
 ---
 
@@ -15,7 +15,7 @@ This is a simple Express.js server that connects to a DigitalOcean Spaces bucket
 ### 1. `/`
 - **Method:** `GET`
 - **Description:** Renders an HTML page listing all SEs (.pdf files).
-- **Includes:** File sizes and a friendly MITPA usage warning.
+- **Includes:** File sizes and a friendly PRACTA usage warning.
 
 ### 2. `/files`
 - **Method:** `GET`
@@ -28,9 +28,9 @@ This is a simple Express.js server that connects to a DigitalOcean Spaces bucket
 ```json
 [
   {
-    "name": "MITPA_SE_Math1.pdf",
+    "name": "PRACTA_SE_Math1.pdf",
     "size": "324.56 KB",
-    "url": "http://files.mitpa.tech/download?file=MITPA_SE_Math1.pdf"
+    "url": "http://files.practa.tech/download?file=PRACTA_SE_Math1.pdf"
   }
 ]
 ```
@@ -40,7 +40,7 @@ This is a simple Express.js server that connects to a DigitalOcean Spaces bucket
 - **Query Param:** `file` (required)
 - **Description:** Downloads the specified file directly from the bucket.
 - **Example:**  
-  `http://files.mitpa.tech/download?file=MITPA_SE_Math1.pdf`
+  `http://files.practa.tech/download?file=PRACTA_SE_Math1.pdf`
 
 ---
 
@@ -52,7 +52,7 @@ You must create a `.env` file in the root with the following:
 DO_SPACES_ENDPOINT=nyc3.digitaloceanspaces.com
 DO_SPACES_KEY=your-access-key
 DO_SPACES_SECRET=your-secret-key
-DO_SPACES_BUCKET=mitpa-se-files
+DO_SPACES_BUCKET=practa-se-files
 ```
 
 > ⚠️ Never commit your `.env` file to version control.
@@ -63,7 +63,7 @@ DO_SPACES_BUCKET=mitpa-se-files
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/MITPAcademy/files.mitpa.tech.git
+git clone https://github.com/PRACTAcademy/files.practa.tech.git
 
 # 2. Navigate into project
 cd se-file-server
@@ -88,7 +88,7 @@ npm start
 
 ## 🤝 Contributing
 
-We welcome your contributions to improve this server and make SE access even better for MITPA members!
+We welcome your contributions to improve this server and make SE access even better for PRACTA members!
 
 - Fork the repo
 - Create a branch (`fix/se-listing`, `feat/download-logging`, etc.)
@@ -101,5 +101,5 @@ For major changes, please open an issue first.
 
 ## 📫 Contact
 
-- [MITPA Website](https://mitpa.tech)
-- Email: [support@mitpa.tech](mailto:support@mitpa.tech)
+- [PRACTA Website](https://practa.tech)
+- Email: [support@practa.tech](mailto:support@practa.tech)

@@ -10,7 +10,6 @@ const port = 8000;
 
 console.log('DO_SPACES_ENDPOINT:', process.env.DO_SPACES_ENDPOINT);
 
-// Configurar CORS para todas as origens
 app.use(cors());
 
 const spacesEndpoint = new AWS.Endpoint(process.env.DO_SPACES_ENDPOINT);
@@ -37,9 +36,9 @@ app.get('/', async (req, res) => {
 
         const warning = `
             <div style="border: 1px solid red; padding: 10px; margin-bottom: 20px;">
-                <p><strong>We strongly recommend using the Simulated Exams (SEs) as practice tools and friendly challenges among members of the MITPA community.</strong></p>
+                <p><strong>We strongly recommend using the Simulated Exams (SEs) as practice tools and friendly challenges among members of the PRACTA community.</strong></p>
                 <p>These exams are not intended to be a guarantee of full content mastery. While SEs may help with preparation for standardized tests such as the SAT and ACT, we consider platforms like Khan Academy more appropriate for in-depth, official study.</p>
-                <p><a href="https://dashboard.mitpa.tech/public/docs/se">Learn More</a></p>
+                <p><a href="https://dashboard.practa.tech/extra-docs/se">Learn More</a></p>
             </div>
         `;
 
@@ -61,7 +60,7 @@ app.get('/files', async (req, res) => {
         const files = pdfs.map(file => ({
             name: file.Key,
             size: `${(file.Size / 1024).toFixed(2)} KB`,
-            url: `http://files.mitpa.tech/download?file=${encodeURIComponent(file.Key)}`
+            url: `http://files.practa.tech/download?file=${encodeURIComponent(file.Key)}`
         }));
 
         res.json(files);
